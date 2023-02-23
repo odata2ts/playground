@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+  controllerName="org.odata2ts.tst.controller.MainController"
+  xmlns:core="sap.ui.core"
+  xmlns="sap.m"
+  xmlns:fb="sap.ui.comp.filterbar"
+>
+  <fb:FilterBar
+    id="searchFilterForm"
+    search="onSearch"
+    clear="onReset"
+    showGoOnFB="true"
+    showClearOnFB="true"
+    useToolbar="false"
+    showFilterConfiguration="false"
+  >
+    <fb:filterGroupItems>
+      <fb:FilterGroupItem
+        name="firstNameFilter"
+        label="First Name"
+        groupName="sap.ui.comp.filterbar.FilterBar.INTERNAL_GROUP"
+        visibleInFilterBar="true"
+      >
+        <fb:control>
+          <Input id="searchFirstName" value="{searchForm>/firstName}" submit="onSearch" />
+        </fb:control>
+      </fb:FilterGroupItem>
+      <fb:FilterGroupItem
+        name="lastNameFilter"
+        label="Last Name"
+        groupName="sap.ui.comp.filterbar.FilterBar.INTERNAL_GROUP"
+        visibleInFilterBar="true"
+      >
+        <fb:control>
+          <Input id="searchFreightOrder" value="{searchForm>/lastName}" submit="onSearch" />
+        </fb:control>
+      </fb:FilterGroupItem>
+    </fb:filterGroupItems>
+  </fb:FilterBar>
+</core:FragmentDefinition>

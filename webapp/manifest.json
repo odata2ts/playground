@@ -1,85 +1,95 @@
 {
-	"_version": "1.12.0",
+  "_version": "1.12.0",
 
-	"sap.app": {
-		"id": "org.odata2ts.tst",
-		"type": "application",
-		"i18n": "i18n/i18n.properties",
-		"title": "{{appTitle}}",
-		"description": "{{appDescription}}",
-		"applicationVersion": {
-			"version": "1.0.0"
-		}
-	},
+  "sap.app": {
+    "id": "org.odata2ts.tst",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "trippin": {
+        "uri": "https://services.odata.org/TripPinRESTierService/(S(uw0lp31en3kfizuwvgtataed))/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
 
-	"sap.ui": {
-		"technology": "UI5",
-		"icons": {
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {},
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
 
-		},
-		"deviceTypes": {
-			"desktop": true,
-			"tablet": true,
-			"phone": true
-		}
-	},
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "org.odata2ts.tst.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
 
-	"sap.ui5": {
-		"rootView": {
-			"viewName": "org.odata2ts.tst.view.App",
-			"type": "XML",
-			"async": true,
-			"id": "app"
-		},
+    "dependencies": {
+      "minUI5Version": "1.111.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.ui.unified": {},
+        "sap.m": {}
+      }
+    },
 
-		"dependencies": {
-			"minUI5Version": "1.111.0",
-			"libs": {
-				"sap.ui.core": {},
-				"sap.ui.layout": {},
-				"sap.ui.unified": {},
-				"sap.m": {}
-			}
-		},
+    "handleValidation": true,
 
-		"handleValidation": true,
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
 
-		"contentDensities": {
-			"compact": true,
-			"cozy": true
-		},
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "org.odata2ts.tst.i18n.i18n"
+        }
+      },
+      "trippin": {
+        "dataSource": "trippin"
+      }
+    },
 
-		"models": {
-			"i18n": {
-				"type": "sap.ui.model.resource.ResourceModel",
-				"settings": {
-					"bundleName": "org.odata2ts.tst.i18n.i18n"
-				}
-			}
-		},
-
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"viewPath": "org.odata2ts.tst.view",
-				"controlId": "app",
-				"controlAggregation": "pages",
-				"async": true
-			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "main",
-					"target": "main"
-				}
-			],
-			"targets": {
-				"main": {
-					"viewId": "main",
-					"viewName": "Main"
-				}
-			}
-		}
-	}
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "org.odata2ts.tst.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "main",
+          "target": "main"
+        }
+      ],
+      "targets": {
+        "main": {
+          "viewId": "main",
+          "viewName": "Main"
+        }
+      }
+    }
+  }
 }
