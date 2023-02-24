@@ -36,7 +36,7 @@
     ]
   },
   "dependencies": {
-    "@odata2ts/jquery-odata-client": "^0.1.0",
+    "@odata2ts/jquery-odata-client": "^0.1.1",
     "@odata2ts/odata-service": "^0.13.5"
   }
 }

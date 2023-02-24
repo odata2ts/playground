@@ -9,6 +9,7 @@ import { qPerson } from "org/odata2ts/tst/gen/trippin/QTrippin";
 import * as jq from "jquery";
 import { ODataCollectionResponseV4 } from "@odata2ts/odata-core";
 import { Person } from "org/odata2ts/tst/gen/trippin/TrippinModel";
+import ListBinding from "sap/ui/model/ListBinding";
 
 export interface SearchForm {
   firstName?: string;
@@ -52,28 +53,19 @@ export default class Main extends BaseController {
     const filters = [
       new Filter("FirstName", FilterOperator.Contains, searchForm.firstName),
       new Filter("LastName", FilterOperator.Contains, searchForm.lastName),
-      // TODO: add other filters
-      // new Filter("ServiceLevel", FilterOperator.EQ, searchForm.dispositionType),
-      // new Filter("Prio", FilterOperator.EQ, searchForm.prio),
     ];
 
-    this.getView().byId("peopleTable").getBinding("items").filter(filters, FilterType.Application);
+    (this.getView().byId("peopleTable").getBinding("items") as ListBinding).filter(filters, FilterType.Application);
   }
 
   onSearchWithBuilder() {
     const searchForm = (this.getView().getModel("searchForm") as JSONModel).getData() as SearchForm;
 
-    const builder = createQueryBuilderV4("People", qPerson);
-    builder
+    const builder = createQueryBuilderV4("People", qPerson)
       .expanding("Trips", (tripBuilder, qTrip) => {
         return tripBuilder.select("Budget");
       })
-      .filter(
-        searchForm.firstName ? qPerson.FirstName.contains(searchForm.firstName) : undefined,
-        searchForm.lastName ? qPerson.LastName.contains(searchForm.lastName) : undefined,
-        null,
-        undefined
-      );
+      .filter(qPerson.FirstName.contains(searchForm.firstName), qPerson.LastName.contains(searchForm.lastName));
     const uri = `https://services.odata.org/TripPinRESTierService/(S(owzxqhvev5aoqr2ossuzxhvq))/${builder.build()}`;
 
     // new OData2tsModel(service.People("russellwhyte").BestFriend(), "bestFriend");
@@ -93,8 +85,8 @@ export default class Main extends BaseController {
       .navToPeople()
       .query((qb, qPerson) => {
         return qb.filter(
-          qPerson.FirstName.contains(searchForm.firstName),
-          qPerson.LastName.contains(searchForm.lastName)
+          qPerson.FirstName.toLower().contains(searchForm.firstName.toLowerCase()),
+          qPerson.LastName.toLower().contains(searchForm.lastName.toLowerCase())
         );
       })
       .then((res) => {
