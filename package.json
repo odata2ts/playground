@@ -5,7 +5,7 @@
   "author": "texttechne",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "odatat2ts && ui5 build --clean-dest",
+    "build": "npm run gen-odata && ui5 build --clean-dest",
     "build:opt": "odatat2ts && ui5 build self-contained --clean-dest --all",
     "start": "ui5 serve --port 8080 -o index.html",
     "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
