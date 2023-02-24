@@ -10,7 +10,6 @@
     <titleHeading>
       <m:VBox>
         <m:Title text="{i18n>appTitle}" />
-        <m:Title text="{i18n>workList.title}" titleStyle="H3" />
       </m:VBox>
     </titleHeading>
     <headerContent>
