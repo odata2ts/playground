@@ -41,7 +41,7 @@ tsconfig.build.tsbuildinfo
 # .vscode
 
 # Intellij / Webstorm
-.idea
+#.idea
 *.iws
 *.iml
 *.ipr
