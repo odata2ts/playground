@@ -1,9 +1,9 @@
 <core:FragmentDefinition
-  controllerName="org.odata2ts.tst.controller.MainController"
+  controllerName="org.odata2ts.tst.mobx.MobxMain"
   xmlns:core="sap.ui.core"
   xmlns="sap.m"
 >
-  <Table id="peopleTable" items="{trip>/}" mode="SingleSelectMaster" selectionChange=".onSelect">
+  <Table id="peopleTable" items="{model>/people}" mode="SingleSelectMaster" selectionChange=".onSelect">
     <columns>
       <Column>
         <Text text="First Name" />
@@ -18,9 +18,9 @@
     <items>
       <ColumnListItem>
         <cells>
-          <Text text="{trip>FirstName}" />
-          <Text text="{trip>LastName}" />
-          <Text text="{trip>UserName}" />
+          <Text text="{model>FirstName}" />
+          <Text text="{model>LastName}" />
+          <Text text="{model>UserName}" />
         </cells>
       </ColumnListItem>
     </items>

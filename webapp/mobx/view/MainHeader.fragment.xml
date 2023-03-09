@@ -1,5 +1,5 @@
 <core:FragmentDefinition
-  controllerName="org.odata2ts.tst.controller.MainController"
+  controllerName="org.odata2ts.tst.mobx.MobxMain"
   xmlns:core="sap.ui.core"
   xmlns="sap.m"
   xmlns:fb="sap.ui.comp.filterbar"
@@ -21,7 +21,7 @@
         visibleInFilterBar="true"
       >
         <fb:control>
-          <Input id="searchFirstName" value="{searchForm>/firstName}" submit="onSearch" />
+          <Input id="searchFirstName" value="{model>/search/firstName}" submit="onSearch" />
         </fb:control>
       </fb:FilterGroupItem>
       <fb:FilterGroupItem
@@ -31,7 +31,7 @@
         visibleInFilterBar="true"
       >
         <fb:control>
-          <Input id="searchFreightOrder" value="{searchForm>/lastName}" submit="onSearch" />
+          <Input id="searchFreightOrder" value="{model>/search/lastName}" submit="onSearch" />
         </fb:control>
       </fb:FilterGroupItem>
     </fb:filterGroupItems>
