@@ -72,7 +72,8 @@
       "config": {
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
-        "viewPath": "org.odata2ts.tst.view",
+        "viewPath": "org.odata2ts.tst",
+        "viewName": "app",
         "controlId": "app",
         "controlAggregation": "pages",
         "async": true
