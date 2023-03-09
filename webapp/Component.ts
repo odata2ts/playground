@@ -1,6 +1,6 @@
 import UIComponent from "sap/ui/core/UIComponent";
 import { support } from "sap/ui/Device";
-import models from "./model/models";
+import models from "./models";
 import { TrippinService } from "./gen/trippin/TrippinService";
 import { JQueryODataClient } from "@odata2ts/jquery-odata-client";
 import * as jq from "jquery";

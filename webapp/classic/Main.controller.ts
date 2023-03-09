@@ -1,5 +1,5 @@
-import BaseController from "./BaseController";
-import formatter from "../model/formatter";
+import BaseController from "../BaseController";
+import formatter from "./model/formatter";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import Filter from "sap/ui/model/Filter";
 import FilterOperator from "sap/ui/model/FilterOperator";
@@ -39,7 +39,7 @@ export default class Main extends BaseController {
     this.onReset();
 
     // initial model
-    this.getView().setModel(new JSONModel([]), "trip");
+    this.getView().setModel(new JSONModel([]), "people");
   }
 
   onReset() {
@@ -72,7 +72,7 @@ export default class Main extends BaseController {
 
     jq.get(uri, (response: ODataCollectionResponseV4<Person>) => {
       console.log("response", response.value);
-      (this.getView().getModel("trip") as JSONModel).setData(response.value);
+      (this.getView().getModel("people") as JSONModel).setData(response.value);
     }).catch((e) => {
       console.error("failed get request!");
     });
@@ -90,7 +90,7 @@ export default class Main extends BaseController {
         );
       })
       .then((res) => {
-        (this.getView().getModel("trip") as JSONModel).setData(res.data.value);
+        (this.getView().getModel("people") as JSONModel).setData(res.data.value);
       })
       .catch((e) => {
         console.error("Oh no, search failed!", e);

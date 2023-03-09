@@ -82,12 +82,21 @@
           "pattern": "",
           "name": "main",
           "target": "main"
+        },
+        {
+          "pattern": "mobx",
+          "name": "mobx",
+          "target": "mobx"
         }
       ],
       "targets": {
         "main": {
           "viewId": "main",
-          "viewName": "Main"
+          "viewName": "classic/view/Main"
+        },
+        "mobx": {
+          "viewId": "mobx",
+          "viewName": "mobx/view/Main"
         }
       }
     }

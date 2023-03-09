@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+  controllerName="org.odata2ts.tst.classic.MainController"
+  xmlns:core="sap.ui.core"
+  xmlns="sap.m"
+>
+  <Table id="peopleTable" items="{people>/}" mode="SingleSelectMaster" selectionChange=".onSelect">
+    <columns>
+      <Column>
+        <Text text="First Name" />
+      </Column>
+      <Column>
+        <Text text="Last Name" />
+      </Column>
+      <Column>
+        <Text text="User Name" />
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <cells>
+          <Text text="{people>FirstName}" />
+          <Text text="{people>LastName}" />
+          <Text text="{people>UserName}" />
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+</core:FragmentDefinition>

@@ -1,5 +1,5 @@
 <mvc:View
-  controllerName="org.odata2ts.tst.controller.App"
+  controllerName="org.odata2ts.tst.App"
   displayBlock="true"
   xmlns="sap.m"
   xmlns:mvc="sap.ui.core.mvc"

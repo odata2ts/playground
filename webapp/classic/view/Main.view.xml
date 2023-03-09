@@ -1,5 +1,5 @@
 <mvc:View
-  controllerName="org.odata2ts.tst.controller.Main"
+  controllerName="org.odata2ts.tst.classic.Main"
   displayBlock="true"
   xmlns="sap.f.semantic"
   xmlns:m="sap.m"
@@ -13,10 +13,10 @@
       </m:VBox>
     </titleHeading>
     <headerContent>
-      <core:Fragment fragmentName="org.odata2ts.tst.view.MainHeader" type="XML" />
+      <core:Fragment fragmentName="org.odata2ts.tst.classic.view.MainHeader" type="XML" />
     </headerContent>
     <content>
-      <core:Fragment fragmentName="org.odata2ts.tst.view.MainContent" type="XML" />
+      <core:Fragment fragmentName="org.odata2ts.tst.classic.view.MainContent" type="XML" />
     </content>
   </SemanticPage>
 </mvc:View>
