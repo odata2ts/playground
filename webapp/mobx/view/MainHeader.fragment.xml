@@ -3,6 +3,7 @@
   xmlns:core="sap.ui.core"
   xmlns="sap.m"
   xmlns:fb="sap.ui.comp.filterbar"
+  xmlns:layout="sap.ui.layout"
 >
   <fb:FilterBar
     id="searchFilterForm"
@@ -21,7 +22,7 @@
         visibleInFilterBar="true"
       >
         <fb:control>
-          <Input id="searchFirstName" value="{model>/search/firstName}" submit="onSearch" />
+          <Input value="{/search/firstName}" submit="onSearch"/>
         </fb:control>
       </fb:FilterGroupItem>
       <fb:FilterGroupItem
@@ -31,9 +32,16 @@
         visibleInFilterBar="true"
       >
         <fb:control>
-          <Input id="searchFreightOrder" value="{model>/search/lastName}" submit="onSearch" />
+          <Input value="{/search/lastName}" submit="onSearch"/>
         </fb:control>
       </fb:FilterGroupItem>
     </fb:filterGroupItems>
   </fb:FilterBar>
+  <layout:VerticalLayout
+    id="vLayout"
+    binding="{/search}"
+    width="100%"
+  >
+    <Input value="{/search/lastName}" submit="onSearch"/>
+  </layout:VerticalLayout>
 </core:FragmentDefinition>

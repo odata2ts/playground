@@ -3,7 +3,7 @@
   xmlns:core="sap.ui.core"
   xmlns="sap.m"
 >
-  <Table id="peopleTable" items="{model>/people}" mode="SingleSelectMaster" selectionChange=".onSelect">
+  <Table id="peopleTable" items="{/formattedPeople}" mode="SingleSelectMaster" selectionChange=".onSelect">
     <columns>
       <Column>
         <Text text="First Name" />
@@ -12,15 +12,15 @@
         <Text text="Last Name" />
       </Column>
       <Column>
-        <Text text="User Name" />
+        <Text text="Computed Full Name" />
       </Column>
     </columns>
     <items>
       <ColumnListItem>
         <cells>
-          <Text text="{model>FirstName}" />
-          <Text text="{model>LastName}" />
-          <Text text="{model>UserName}" />
+          <Text text="{FirstName}" />
+          <Text text="{LastName}" />
+          <Text text="{fullName}" />
         </cells>
       </ColumnListItem>
     </items>

@@ -3,7 +3,7 @@ import { SearchForm } from "./MobxMain.controller";
 import { Person } from "org/odata2ts/tst/gen/trippin/TrippinModel";
 
 export class MobxMainStore {
-  searchForm: SearchForm = {
+  search: SearchForm = {
     firstName: "",
     lastName: "",
     age: undefined,
@@ -16,7 +16,7 @@ export class MobxMainStore {
 
   constructor() {
     makeObservable(this, {
-      searchForm: observable,
+      search: observable,
       people: observable.ref,
     });
   }

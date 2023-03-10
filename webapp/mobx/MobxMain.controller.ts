@@ -1,7 +1,10 @@
+/* eslint-disable */
 import BaseController from "../BaseController";
 import { MobxMainStore } from "./MobxMainStore";
-import { MobxModel } from "org/odata2ts/tst/mobx/lib/MobxModel";
 import { makeAutoObservable } from "mobx";
+import { Person } from "org/odata2ts/tst/gen/trippin/TrippinModel";
+// import { MobxModel } from "org/odata2ts/tst/mobx/lib/MobxModel";
+import { MobxModel } from "cpro/js/ui5/mobx/MobxModel";
 
 export interface SearchForm {
   firstName?: string;
@@ -12,13 +15,21 @@ export interface SearchForm {
 
 function createSearchForm(): SearchForm {
   return {
-    firstName: "russel",
+    firstName: "",
     lastName: "why",
   };
 }
 
 export default class MobxMainController extends BaseController {
-  private stateDirect = makeAutoObservable({ search: createSearchForm(), people: [] });
+  private stateDirect = makeAutoObservable({
+    search: createSearchForm(),
+    people: [],
+    get formattedPeople(): Array<Person> {
+      return this.people.map((p) => {
+        return { ...p, fullName: `${p.FirstName} ${p.LastName}` };
+      });
+    },
+  });
   private state = new MobxMainStore();
 
   private getTrippinService() {
@@ -28,7 +39,7 @@ export default class MobxMainController extends BaseController {
   onInit() {
     // initial model
     const model = new MobxModel(this.stateDirect);
-    this.getView().setModel(model, "model");
+    this.getView().setModel(model);
   }
 
   public onSearch() {
@@ -43,6 +54,7 @@ export default class MobxMainController extends BaseController {
         );
       })
       .then((res) => {
+        people.length = 0;
         people.push(...res.data.value);
       })
       .catch((e) => {
