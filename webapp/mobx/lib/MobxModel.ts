@@ -1,13 +1,13 @@
 /* eslint-disable */
-import { MobxListBinding } from "./MobxListBinding";
 import { isObservable } from "mobx";
+import { MobxListBinding } from "./MobxListBinding";
+import { MobxContextBinding } from "./MobxContextBinding";
+import { MobxPropertyBinding } from "./MobxPropertyBinding";
 import Context from "sap/ui/model/Context";
 import ContextBinding from "sap/ui/model/ContextBinding";
 import Filter from "sap/ui/model/Filter";
 import Model from "sap/ui/model/Model";
 import Sorter from "sap/ui/model/Sorter";
-
-import { MobxPropertyBinding } from "./MobxPropertyBinding";
 
 export interface MobxModelType<T extends object = any> extends Model {
   getData: () => T;
@@ -154,8 +154,11 @@ export class MobxModel<T extends object> extends Model implements MobxModelType<
    */
   public destroyBindingContext(ctx: Context) {}
 
-  public bindContext(path: string, ctx?: Context, parameters?: object, events?: object): ContextBinding {
-    throw new Error("Not implemented yet!");
+  public bindContext(path: string, ctx: Context, parameters?: object, events?: object): ContextBinding {
+    if (!path) {
+      throw new Error(`Path is required! Provided value: ${path}`);
+    }
+    return new MobxContextBinding(this, path, ctx, parameters, events);
   }
 
   public bindProperty(path: string, ctx?: Context, parameters?: object): MobxPropertyBinding {
