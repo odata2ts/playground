@@ -16,7 +16,8 @@
     "moduleResolution": "node",
     "typeRoots": ["./node_modules/@types", "./node_modules/@openui5/ts-types-esm"],
     "paths": {
-      "org/odata2ts/tst/*": ["./webapp/*"]
+      "org/odata2ts/tst/*": ["./webapp/*"],
+      "cpro/js/ui5/mobx/*": ["./node_modules/ui5-mobx/src/cpro/js/ui5/mobx/*"]
     }
   },
   "include": ["./webapp/**/*"]

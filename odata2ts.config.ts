@@ -3,6 +3,7 @@ import { ConfigFileOptions, EmitModes, Modes } from "@odata2ts/odata2ts";
 const config: ConfigFileOptions = {
   mode: Modes.service,
   emitMode: EmitModes.ts,
+  prettier: true,
   allowRenaming: false,
   services: {
     trippin: {

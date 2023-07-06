@@ -1,9 +1,8 @@
 /* eslint-disable */
 import BaseController from "../BaseController";
 import { MobxMainStore } from "./MobxMainStore";
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import { Person } from "org/odata2ts/tst/gen/trippin/TrippinModel";
-// import { MobxModel } from "org/odata2ts/tst/mobx/lib/MobxModel";
 import { MobxModel } from "cpro/js/ui5/mobx/MobxModel";
 
 export interface SearchForm {
@@ -20,8 +19,11 @@ function createSearchForm(): SearchForm {
   };
 }
 
+/**
+ * @namespace org.odata2ts.tst.mobx
+ */
 export default class MobxMainController extends BaseController {
-  private stateDirect = makeAutoObservable({
+  private state = makeAutoObservable({
     search: createSearchForm(),
     people: [],
     get formattedPeople(): Array<Person> {
@@ -30,7 +32,6 @@ export default class MobxMainController extends BaseController {
       });
     },
   });
-  private state = new MobxMainStore();
 
   private getTrippinService() {
     return this.getOwnerComponent().getTrippinService();
@@ -38,12 +39,14 @@ export default class MobxMainController extends BaseController {
 
   onInit() {
     // initial model
-    const model = new MobxModel(this.stateDirect);
+    const model = new MobxModel(this.state);
     this.getView().setModel(model);
   }
 
   public onSearch() {
-    const { search, people } = this.stateDirect;
+    const { search, people } = this.state;
+
+    console.log("search", toJS(search));
 
     this.getTrippinService()
       .navToPeople()

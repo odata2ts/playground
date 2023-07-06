@@ -19,7 +19,7 @@ export interface SearchForm {
 }
 
 /**
- * @namespace org.odata2ts.tst.controller
+ * @namespace org.odata2ts.tst.classic
  */
 export default class Main extends BaseController {
   private formatter = formatter;
@@ -29,10 +29,6 @@ export default class Main extends BaseController {
       firstName: "",
       lastName: "",
     };
-  }
-
-  private getTrippinService() {
-    return this.getOwnerComponent().getTrippinService();
   }
 
   onInit() {
@@ -48,7 +44,11 @@ export default class Main extends BaseController {
   }
 
   onSearchClassic() {
-    const searchForm = (this.getView().getModel("searchForm") as JSONModel).getData() as SearchForm;
+    const model = this.getView()
+      .getModel("searchForm") as JSONModel;
+    const searchForm = model.getData() as SearchForm;
+
+    //const searchForm = (this.getView().getModel("searchForm") as JSONModel).getData() as SearchForm;
 
     const filters = [
       new Filter("FirstName", FilterOperator.Contains, searchForm.firstName),
@@ -61,14 +61,17 @@ export default class Main extends BaseController {
   onSearchWithBuilder() {
     const searchForm = (this.getView().getModel("searchForm") as JSONModel).getData() as SearchForm;
 
+    // you have to provide the path and the proper query object
     const builder = createQueryBuilderV4("People", qPerson)
+      .expand("Emails")
       .expanding("Trips", (tripBuilder, qTrip) => {
         return tripBuilder.select("Budget");
       })
-      .filter(qPerson.FirstName.contains(searchForm.firstName), qPerson.LastName.contains(searchForm.lastName));
+      .filter(
+        qPerson.FirstName.toLower().contains(searchForm.firstName),
+        qPerson.LastName.contains(searchForm.lastName)
+      );
     const uri = `https://services.odata.org/TripPinRESTierService/(S(owzxqhvev5aoqr2ossuzxhvq))/${builder.build()}`;
-
-    // new OData2tsModel(service.People("russellwhyte").BestFriend(), "bestFriend");
 
     jq.get(uri, (response: ODataCollectionResponseV4<Person>) => {
       console.log("response", response.value);
@@ -76,6 +79,10 @@ export default class Main extends BaseController {
     }).catch((e) => {
       console.error("failed get request!");
     });
+  }
+
+  private getTrippinService() {
+    return this.getOwnerComponent().getTrippinService();
   }
 
   onSearch() {

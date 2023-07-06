@@ -1,4 +1,40 @@
-# tst
+# UI5 with odata2ts & MobX
+
+This app demonstrates the usage of 
+[odata2ts](https://odata2ts.github.io/) and [MobX](https://mobx.js.org/README.html#introduction) 
+in [UI5](https://sdk.openui5.org/) apps. 
+
+## Modern Front End Web-App
+The real enabler for modern app development is the appearance of `Node.js` and the pretty 
+cool JavaScript focused tooling that has been developed since.  
+
+* [ui5-tooling](https://sap.github.io/ui5-tooling/stable/) is that cool thing in UI5 world
+  * provides "best practice" build: transpilation, minification, ...
+  * flexible by allowing for custom middlewares & tasks
+  * ui5-ecosystem-showcase
+* type-safety based on `TypeScript` 
+  * static type checking = get compile-time instead of run-time errors for a whole range of error classes
+  * enables sensational IDE support 
+* makes `DX` (Developer eXperience) a thing
+  * focus on productivity of developer
+  * auto-completion all over
+  * convenience features
+    * live reload: Browser reloads automatically when source code changes 
+    * remove `console.log` statements from build code
+    * ...
+
+
+* leveraging JS constructs to realize higher level concepts
+  * the real strength of MobX are `computed values` which are implemented as JS getters
+
+show modern and typesafe (and direct) way to work with state by using MobX 
+* show integration of regular open source like deployed to NPM: Mobx
+* show integration of UI5 lib deployed to NPM: ui5-mobx
+* 
+  * [ui5-mobx]() realizes the integration of Mobx into UI5 by providing `MobxModel` classes and bindings
+* 
+
+This app has been bootstrapped with easy-ui5 and its TypeScript 
 
 ## Description
 
@@ -6,12 +42,12 @@ This app demonstrates a TypeScript setup for developing UI5 applications.
 
 **The template is inspired by the [`SAP-samples/ui5-typescript-helloworld`](https://github.com/SAP-samples/ui5-typescript-helloworld) project which also contains [a detailed step-by-step guide](https://github.com/SAP-samples/ui5-typescript-helloworld/blob/main/step-by-step.md). It explains how this setup is created and how all the bits and pieces fit together.**
 
-| :point_up: Overview of TypeScript-related Entities |
-|:---------------------------|
+| :point_up: Overview of TypeScript-related Entities                                                                                                                                                                                                                                         |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The UI5 type definitions (`*.d.ts` files) are loaded as dev dependency from [npm](https://www.npmjs.com/package/@openui5/ts-types-esm). They are a work in progress, so while they should be working well already, we are still improving them, which might also lead to breaking changes. |
-| The file [tsconfig.json](tsconfig.json) contains the configuration for the TypeScript compilation, including a reference to the UI5 `*.d.ts` files. |
-| The project is using the `ui5-tooling-transpile` extensions to compile TypeScript and to convert from the ES6 module and class syntax used in the source files to the classic UI5 module loading and class definition syntax (`sap.ui.define(...)` and `superClass.extend(...)`). |
-| Both, the TypeScript compilation and the ES6 syntax transformation, are executed by Babel, as configured in the file [.babelrc.json](.babelrc.json) |
+| The file [tsconfig.json](tsconfig.json) contains the configuration for the TypeScript compilation, including a reference to the UI5 `*.d.ts` files.                                                                                                                                        |
+| The project is using the `ui5-tooling-transpile` extensions to compile TypeScript and to convert from the ES6 module and class syntax used in the source files to the classic UI5 module loading and class definition syntax (`sap.ui.define(...)` and `superClass.extend(...)`).          |
+| Both, the TypeScript compilation and the ES6 syntax transformation, are executed by Babel, as configured in the file [.babelrc.json](.babelrc.json)                                                                                                                                        |
 
 ## Requirements
 
