@@ -1,5 +1,4 @@
 import BaseController from "../BaseController";
-import formatter from "./model/formatter";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import Filter from "sap/ui/model/Filter";
 import FilterOperator from "sap/ui/model/FilterOperator";
@@ -22,8 +21,6 @@ export interface SearchForm {
  * @namespace org.odata2ts.tst.classic
  */
 export default class Main extends BaseController {
-  private formatter = formatter;
-
   private createSearchForm(): SearchForm {
     return {
       firstName: "",
@@ -44,8 +41,7 @@ export default class Main extends BaseController {
   }
 
   onSearchClassic() {
-    const model = this.getView()
-      .getModel("searchForm") as JSONModel;
+    const model = this.getView().getModel("searchForm") as JSONModel;
     const searchForm = model.getData() as SearchForm;
 
     //const searchForm = (this.getView().getModel("searchForm") as JSONModel).getData() as SearchForm;

@@ -1,15 +1,8 @@
 /* eslint-disable */
 import BaseController from "../BaseController";
-import { mainStore } from "./MobxMainStore";
+import { mainStore } from "./MainStore";
 import { toJS } from "mobx";
 import { MobxModel } from "cpro/js/ui5/mobx/MobxModel";
-
-export interface SearchForm {
-  firstName?: string;
-  lastName?: string;
-  userName?: string;
-  age?: number;
-}
 
 /**
  * @namespace org.odata2ts.tst.mobx
@@ -20,7 +13,6 @@ export default class MobxMainController extends BaseController {
   }
 
   onInit() {
-    // initial model
     const model = new MobxModel(mainStore);
     this.getView().setModel(model);
   }
@@ -28,8 +20,10 @@ export default class MobxMainController extends BaseController {
   public onSearch() {
     const { search } = mainStore;
 
-    console.log("search", search);
-    console.log("search", toJS(search));
+    // when logging you see the proxy object
+    // console.log("search", search);
+    // use special MobX method for that
+    // console.log("search", toJS(search));
 
     this.getTrippinService()
       .navToPeople()
@@ -40,10 +34,14 @@ export default class MobxMainController extends BaseController {
         );
       })
       .then((res) => {
-        mainStore.setPeople(res.data.value);
+        mainStore.people = res.data.value;
       })
       .catch((e) => {
         console.error("Oh no, search failed!", e);
       });
+  }
+
+  public onReset() {
+    mainStore.resetSearch();
   }
 }
