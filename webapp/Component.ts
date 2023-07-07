@@ -4,6 +4,7 @@ import models from "./models";
 import { TrippinService } from "./gen/trippin/TrippinService";
 import { JQueryODataClient } from "@odata2ts/jquery-odata-client";
 import * as jq from "jquery";
+import { configure } from "mobx";
 
 /**
  * @namespace org.odata2ts.tst
@@ -25,6 +26,11 @@ export default class Component extends UIComponent {
 
     // create the views based on the url/hash
     this.getRouter().initialize();
+
+    // MobX configuration
+    configure({
+      enforceActions: "never", // set via bindings
+    });
 
     // init Trippin OData service
     const client = new JQueryODataClient(jq);
