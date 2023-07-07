@@ -35,12 +35,12 @@ export default class Main extends BaseController {
     this.getView().setModel(new JSONModel([]), "people");
   }
 
-  onReset() {
+  public onReset() {
     const searchForm = new JSONModel(this.createSearchForm(), false);
     this.getView().setModel(searchForm, "searchForm");
   }
 
-  onSearchClassic() {
+  public onSearchClassic() {
     const model = this.getView().getModel("searchForm") as JSONModel;
     const searchForm = model.getData() as SearchForm;
 
@@ -54,7 +54,7 @@ export default class Main extends BaseController {
     (this.getView().byId("peopleTable").getBinding("items") as ListBinding).filter(filters, FilterType.Application);
   }
 
-  onSearchWithBuilder() {
+  public onSearchWithBuilder() {
     const searchForm = (this.getView().getModel("searchForm") as JSONModel).getData() as SearchForm;
 
     // you have to provide the path and the proper query object
@@ -67,8 +67,10 @@ export default class Main extends BaseController {
         qPerson.FirstName.toLower().contains(searchForm.firstName),
         qPerson.LastName.contains(searchForm.lastName)
       );
-    const uri = `https://services.odata.org/TripPinRESTierService/(S(owzxqhvev5aoqr2ossuzxhvq))/${builder.build()}`;
+    const resultPath = builder.build();
+    console.log("--- resultPath:", resultPath);
 
+    const uri = `https://services.odata.org/TripPinRESTierService/(S(owzxqhvev5aoqr2ossuzxhvq))/${resultPath}`;
     jq.get(uri, (response: ODataCollectionResponseV4<Person>) => {
       console.log("response", response.value);
       (this.getView().getModel("people") as JSONModel).setData(response.value);
@@ -81,11 +83,11 @@ export default class Main extends BaseController {
     return this.getOwnerComponent().getTrippinService();
   }
 
-  onSearch() {
+  public onSearch() {
     const searchForm = (this.getView().getModel("searchForm") as JSONModel).getData() as SearchForm;
 
     this.getTrippinService()
-      .navToPeople()
+      .People()
       .query((qb, qPerson) => {
         return qb.filter(
           qPerson.FirstName.toLower().contains(searchForm.firstName.toLowerCase()),

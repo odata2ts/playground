@@ -25,11 +25,11 @@ export default class MobxMainController extends BaseController {
     // console.log("search", toJS(search));
 
     this.getTrippinService()
-      .navToPeople()
+      .People()
       .query((qb, qPerson) => {
         return qb.filter(
-          qPerson.FirstName.toLower().contains(search.firstName.toLowerCase()),
-          qPerson.LastName.toLower().contains(search.lastName.toLowerCase())
+          !search.firstName ? undefined : qPerson.FirstName.toLower().contains(search.firstName?.toLowerCase()),
+          !search.lastName ? undefined : qPerson.LastName.toLower().contains(search.lastName?.toLowerCase())
         );
       })
       .then((res) => {
