@@ -20,5 +20,5 @@
       "cpro/js/ui5/mobx/*": ["./node_modules/ui5-mobx/src/cpro/js/ui5/mobx/*"]
     }
   },
-  "include": ["./webapp/**/*"]
+  "include": ["./webapp/**/*", "odata2ts.config.ts"]
 }

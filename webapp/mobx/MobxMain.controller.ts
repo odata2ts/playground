@@ -1,4 +1,3 @@
-/* eslint-disable */
 import BaseController from "../BaseController";
 import { mainStore } from "./MainStore";
 import { toJS } from "mobx";
