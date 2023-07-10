@@ -1,0 +1,15 @@
+{
+  "generator-ui5-ts-app": {
+    "application": "tst",
+    "namespace": "org.odata2ts",
+    "framework": "OpenUI5",
+    "frameworkVersion": "1.111.0",
+    "author": "texttechne",
+    "initrepo": true,
+    "tstypes": "@openui5/ts-types-esm",
+    "tstypesVersion": "1.111.0",
+    "appId": "org.odata2ts.tst",
+    "appURI": "org/odata2ts/tst",
+    "setupCompleted": true
+  }
+}

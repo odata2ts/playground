@@ -1,0 +1,10 @@
+<mvc:View
+  controllerName="org.odata2ts.tst.controller.App"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+>
+  <Shell>
+    <App id="app" />
+  </Shell>
+</mvc:View>

@@ -1,0 +1,22 @@
+<mvc:View
+  controllerName="org.odata2ts.tst.controller.Main"
+  displayBlock="true"
+  xmlns="sap.f.semantic"
+  xmlns:m="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+>
+  <SemanticPage>
+    <titleHeading>
+      <m:VBox>
+        <m:Title text="{i18n>appTitle} driven by Mobx" />
+      </m:VBox>
+    </titleHeading>
+    <headerContent>
+      <core:Fragment fragmentName="org.odata2ts.tst.view.MainHeader" type="XML" />
+    </headerContent>
+    <content>
+      <core:Fragment fragmentName="org.odata2ts.tst.view.MainContent" type="XML" />
+    </content>
+  </SemanticPage>
+</mvc:View>
