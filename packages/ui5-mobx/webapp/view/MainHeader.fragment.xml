@@ -13,6 +13,7 @@
     showClearOnFB="true"
     useToolbar="false"
     showFilterConfiguration="false"
+    binding="{/search}"
   >
     <fb:filterGroupItems>
       <fb:FilterGroupItem
@@ -22,7 +23,7 @@
         visibleInFilterBar="true"
       >
         <fb:control>
-          <Input value="{/search/firstName}" submit="onSearch"/>
+          <Input value="{firstName}" submit="onSearch"/>
         </fb:control>
       </fb:FilterGroupItem>
       <fb:FilterGroupItem
@@ -32,7 +33,7 @@
         visibleInFilterBar="true"
       >
         <fb:control>
-          <Input value="{/search/lastName}" submit="onSearch"/>
+          <Input value="{lastName}" submit="onSearch"/>
         </fb:control>
       </fb:FilterGroupItem>
     </fb:filterGroupItems>
